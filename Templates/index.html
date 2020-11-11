@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/indexstyles.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Friends Adda</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <p>
+            Friends Adda
+            <span>
+                Powered by Codelikedev
+            </span>
+        </p>
+        <a href="https://www.instagram.com/codelikedev.py/" target="_blank">Contact Us On <i class="fab fa-instagram"></i></a>
+    </nav>
+    <div class="modal fade" id="createquestionsmodal">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              <p class="mediumtext">User Already Exists</p>
+              <a class="btn btn-outline-secondary visitorslink">See all your visitors</a>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    <div class="container">
+        <div class="mainbox boxactive">
+            <input type="text" placeholder="Enter your name" class="detailsinput" id="nameid" required>
+            <span></span>
+            <input type="email" placeholder="Enter your mail" class="detailsinput" id="emailid" required>
+            <span></span>
+            <button type="button" id="detailsbutton" class="btn btn-outline-primary">Create your Questions</button>
+            <p id="Orele">Or</p>
+            <a href="#" id="getquebtn" class="btn btn-outline-secondary" onclick="alert('Editing Questions will be added soon')">Get and edit your questions</a>
+        </div>
+        <div class="mainbox boxinactive" id="resultdiv">
+            <img src="{% static 'Images/tick_box.gif' %}" alt="Tick Box">
+            <p>
+                Successfully Registered
+            </p>
+            <a class="url" id="sharingurl"></a>
+            <div class="clearfix copybtn">
+                <a style="cursor:pointer;" class="btn btn-outline-secondary visitorslink">see all your visitors</a>
+                <button class="btn btn-secondary float-right" id="copyurl">copy</button>
+            </div>
+            <h6>Share the url with your friends to answer your questions</h6>
+        </div>
+        <div class="mainbox boxinactive" id="questionsdiv">
+            <marquee behavior="scroll" direction="rtl">Please give your correct answer in the specified text box</marquee>
+            <form id="questionsform">
+                {% csrf_token %}
+                <input type="hidden" name="usrname" id="hiddenusrname">
+                <input type="hidden" name="email" id="hiddenmailid">
+                <div class="form-group active">
+                    <input type="text" class="questioninput" name="question1" placeholder="Type your first question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                        <input type="text" class="optioninput" placeholder="Enter your option 2">
+                        <input type="text" class="optioninput" placeholder="Enter your option 3">
+                        <input type="text" class="optioninput" placeholder="Enter your option 4">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer1">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question2" placeholder="Type your second question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput" placeholder="Enter your option 1">
+                        <input type="text" class="optioninput" placeholder="Enter your option 2">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                        <input type="text" class="optioninput" placeholder="Enter your option 4">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer2">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question3" placeholder="Type your third question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput" placeholder="Enter your option 1">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                        <input type="text" class="optioninput" placeholder="Enter your option 3">
+                        <input type="text" class="optioninput" placeholder="Enter your option 4">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer3">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question4" placeholder="Type your fourth question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                        <input type="text" class="optioninput" placeholder="Enter your option 2">
+                        <input type="text" class="optioninput" placeholder="Enter your option 3">
+                        <input type="text" class="optioninput" placeholder="Enter your option 4">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer4">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question5" placeholder="Type your fifth question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput" placeholder="Enter your option 1">
+                        <input type="text" class="optioninput" placeholder="Enter your option 2">
+                        <input type="text" class="optioninput" placeholder="Enter your option 3">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer5">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question6" placeholder="Type your sixth question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput" placeholder="Enter your option 1">
+                        <input type="text" class="optioninput" placeholder="Enter your option 2">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                        <input type="text" class="optioninput" placeholder="Enter your option 4">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer6">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question7" placeholder="Type your seventh question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput" placeholder="Enter your option 1">
+                        <input type="text" class="optioninput" placeholder="Enter your option 2">
+                        <input type="text" class="optioninput" placeholder="Enter your option 3">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer7">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question8" placeholder="Type your eighth question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput" placeholder="Enter your option 1">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                        <input type="text" class="optioninput" placeholder="Enter your option 3">
+                        <input type="text" class="optioninput" placeholder="Enter your option 4">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer8">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question9" placeholder="Type your ninth question">
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput correctanswer" placeholder="Enter your Correct Answer">
+                        <input type="text" class="optioninput" placeholder="Enter your option 2">
+                        <input type="text" class="optioninput" placeholder="Enter your option 3">
+                        <input type="text" class="optioninput" placeholder="Enter your option 4">
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                    </div>
+                    <input type="hidden" name="answer9">
+                </div>
+                <div class="form-group inactive">
+                    <input type="text" class="questioninput" name="question10" placeholder="Type your tenth question" required>
+                    <br>
+                    <div class="options">
+                        <input type="text" class="optioninput lastinput" placeholder="Enter your option 1" required>
+                        <input type="text" class="optioninput lastinput" placeholder="Enter your option 2" required>
+                        <input type="text" class="optioninput lastinput" placeholder="Enter your option 3" required>
+                        <input type="text" class="optioninput lastinput correctanswer" placeholder="Enter your Correct Answer" required>
+                    </div>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary float-left prev-btn">Previous</button>
+                        <button type="submit" class="btn btn-outline-success float-right">Final Submit</button>
+                    </div>
+                    <input type="hidden" id="lastelement" name="answer10">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'JS/indexscripts.js' %}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

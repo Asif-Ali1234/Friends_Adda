@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/gq_styles.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Edit Your Questions</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="mynavbar">
+            <p>
+                Friends Adda
+                <span>
+                    Powered by Codelikedev
+                </span>
+            </p>
+                <a href="https://www.instagram.com/codelikedev.py/" target="_blank">Contact us on <i class="fab fa-instagram"></i></a>
+        </div>
+        <div id="getquestions">
+            <form id="qaform">
+                {% csrf_token %}
+                <input type="email" placeholder="Enter your mail" name="username" id="userid" required>
+                <button type="submit" class="btn btn-outline-secondary">Get Questions</button>
+            </form>
+        </div>
+        <div class="buttonsdiv">
+            <abbr title="Will be added soon"><button disabled class="btn btn-outline-success" style="cursor: not-allowed;" >Edit Questions</button></abbr>
+            <form action="deleteaccount" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="deleteaccountmail" id="did">
+                <button type="button" data-toggle = "modal" data-target="#myModal" class="btn btn-outline-danger">Delete Account</button>
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                      <div class="modal-content">
+                  
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <p class="modal-title">Are you sure want to delete</p>
+                        </div>
+                  
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">Confirm</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </div>
+                  
+                      </div>
+                    </div>
+                  </div>
+            </form>
+        </div>
+        <div class="questionsbox">
+            <div class="loading" id="loadinganimation">
+                <img src="{% static 'Images/smiley_loader.gif' %}" alt="Loaing">
+                <p>Getting Items...</p>
+            </div>
+            <ul id="questionslist">
+            </ul>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="{% static 'JS/gq_scripts.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

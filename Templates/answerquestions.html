@@ -1,0 +1,108 @@
+<!--{% load static %}-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/aq_styles.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Friends Adda</title>
+</head>
+
+<body>
+    <div class="modal fade" id="errormodal">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              <p class="mediumtext">You have already gave answers to this user. Answers can only be given once</p>
+              <a href="/" class="btn btn-outline-danger">Create Questions</a>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    <nav class="navbar">
+        <p>
+            Friends Adda
+            <span>
+                Powered by Codelikedev
+            </span>
+        </p>
+        <a href="https://www.instagram.com/codelikedev.py/" target="_blank">Contact Us On <i class="fab fa-instagram"></i></a>
+    </nav>
+    <div class="container">
+    {% if error == True %}
+        <div class="mainbox boxactive" id="errordiv">
+            <p>User with <span>{{email}}</span> not exists on our server check the mail and try again</p>
+            <p>If you are new here then first start registering here</p>
+            <a href="http://127.0.0.1:8000" target="_blank" class="btn btn-outline-danger">Create Questions</a>
+        </div>
+    {% else %}
+        <div class="mainbox boxactive" id="detailsdiv">
+            <input type="text" placeholder="Enter your name" class="detailsinput" id="nameid" required>
+            <span></span>
+            <input type="email" placeholder="Enter your mail" class="detailsinput" id="emailid" required>
+            <span></span>
+            <button type="button" id="detailsbutton" class="btn btn-outline-primary">Answers Questions</button>
+        </div>
+        <div class="mainbox boxinactive" id="resultdiv">
+            <p class="smalltext">Your score is :</p>
+            <p class="score"><span id="userscore"></span>/10</p>
+            <p class="mediumtext" id="success_percentage"></p>
+            <p class="mediumtext" id="success_message"></p>
+            <p class="mediumtext">It's your turn know , Get your questions and share it with your friends</p>
+            <a href="/" target="_blank" class="btn btn-outline-success">Create Questions</a>
+        </div>
+        <div class="mainbox boxinactive" id="questionsdiv">
+            <form id="questionsform">
+                <input type="hidden" name = "hiddenusermail" value="{{email}}">
+                <input type="hidden" id="hiddenusrname">
+                <input type="hidden" id="hiddenmailid">
+                {% csrf_token %}
+                {% for question in questions %}
+                    <div class="form-group {% if forloop.first %}active{% else %}inactive{% endif %}">
+                        {% for que in question %}
+                            {% if forloop.first %}
+                                <p class="questioninput">{{que}}</p>
+                            {% else %}
+                                <div class="options">
+                                    {% for options in que %}
+                                        <div class="custom-control custom-radio optioninput">
+                                            <input type="radio" class="custom-control-input" id="{{forloop.parentloop.parentloop.counter}}{{forloop.counter}}" name="option{{forloop.parentloop.parentloop.counter}}" value="{{options}}">
+                                            <label class="custom-control-label" for="{{forloop.parentloop.parentloop.counter}}{{forloop.counter}}">{{options}}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="clearfix">
+                            {% if forloop.last %}
+                                <button type="submit" class="btn btn-outline-success float-right">Submit Answers</button>
+                            {% else %}
+                                <button type="button" class="btn btn-outline-secondary float-right next-btn">Next</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </form>
+        </div>
+    {% endif %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'JS/aq_scripts.js' %}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

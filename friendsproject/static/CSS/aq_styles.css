@@ -1,0 +1,237 @@
+body{
+    margin: 0;
+    padding: 20px 10px;
+    min-height: 100vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    background-color: #faf3dd !important;
+}
+
+nav{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 90%;
+    height: 40px;
+    background-color: #065c6f;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav p,
+nav a{
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+}
+
+nav span{
+    color: rgba(255,255,255,0.2);
+    font-size: 1em !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+.mainbox{
+    width: 400px;
+    height: 380px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+    transition: all 0.5s;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background: white;
+}
+
+#detailsdiv span{
+    color: #ffbb91;
+    display: block;
+    width: 90%;
+    text-align: start;
+    margin-bottom: 15px;
+}
+
+.mainbox .detailsinput{
+    width: 90%;
+    border-radius: 7px;
+    border: 1px solid #065c6f;
+    padding: 10px;
+    outline: none;
+    font-size: 1.2em;
+    margin: 0;
+    color: #64958f;
+    margin-bottom: 20px;
+}
+
+.boxactive{
+    top:50%;
+}
+
+.boxinactive{
+    top:-100%;
+}
+
+#resultdiv p{
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    color: green;
+    letter-spacing: 1px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+#resultdiv p.score{
+    font-size: 3.5em;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+}
+
+#resultdiv p.smalltext{
+    font-size: 0.9em;
+    color: gray;
+}
+
+#resultdiv p.mediumtext{
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+#errordiv p{
+    width: 100%;
+    margin: 20px 10px;
+    height: auto;
+    padding: 10px;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+#errordiv p span{
+    color: gray;
+}
+
+#errordiv p:first-child{
+    color: red;
+    text-align: center;
+}
+
+#errordiv p:nth-child(2){
+    color: gray;
+    text-align: center;
+}
+
+.mainbox .form-group .questioninput{
+    border: 1px solid #065c6f;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #64958f;
+    margin-bottom: 10px;
+}
+
+.mainbox .form-group .optioninput{
+    border: 2px solid #ffbb91;
+    margin-bottom: 10px;
+    width: 100%;
+    padding-top: 0 5px;
+    color: #64958f;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mainbox .form-group .optioninput label{
+    width: 95%;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mainbox .form-group .optioninput::-webkit-scrollbar{
+    display: none;
+}
+
+.mainbox .form-group .optioninput:last-child{
+    margin: 0;
+}
+
+.form-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    transition: all 0.5s;
+}
+
+.options{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+.clearfix{
+    width:100%;
+}
+
+.form-group.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.form-group.inactive {
+    pointer-events: none;
+    opacity: 0;
+}
+
+@media (max-width: 992px) {
+    .mainbox{
+        width:95%;
+    }
+
+    nav{
+        top: 10%;
+        font-size: 0.5em;
+    }
+
+    nav a{
+        color: black;
+    }
+
+}
+

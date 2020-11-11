@@ -1,0 +1,230 @@
+body{
+    margin: 0;
+    padding: 20px 10px;
+    min-height: 100vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    background-color: #faf3dd !important;
+}
+
+nav{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 90%;
+    height: 40px;
+    background-color: #065c6f;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav p,
+nav a{
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav a:hover{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+nav span{
+    color: rgba(255,255,255,0.2);
+    font-size: 1em !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+.mainbox{
+    width: 400px;
+    height: 380px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+    transition: all 0.5s;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background: white;
+}
+
+.boxactive{
+    top:50%;
+}
+
+.boxinactive{
+    top:-100%;
+}
+
+#Orele{
+    margin-top: 15px;
+    text-transform: uppercase;
+    color: #ffbb91;
+    font-weight: bold;
+}
+
+#resultdiv  img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#resultdiv .url{
+    background-color: rgba(128,128,128,0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 5px solid rgba(128, 128, 128,1);
+    height: auto;
+    width: 97%;
+    max-height: 100%;
+    margin-bottom: 10px;
+    outline: none;
+    word-wrap: break-word;
+    color: black;
+}
+
+#resultdiv .copybtn{
+    width: 95%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#resultdiv h6{
+    font-size: 1.1em;
+    width: 97%;
+    text-align: center;
+}
+
+#resultdiv p{
+    font-size: 1.2em;
+    color: green;
+    letter-spacing: 1px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.mainbox span{
+    color: #ffbb91;
+    display: block;
+    width: 90%;
+    text-align: start;
+    margin-bottom: 15px;
+}
+
+.mainbox .detailsinput{
+    width: 90%;
+    border-radius: 7px;
+    border: 1px solid #065c6f;
+    padding: 10px;
+    outline: none;
+    font-size: 1.2em;
+    margin: 0;
+    color: #64958f;
+}
+
+.mainbox .form-group .questioninput{
+    border: 1px solid #065c6f;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #64958f;
+}
+
+.mainbox .form-group .optioninput{
+    border: 2px solid #ffbb91;
+    margin-bottom: 10px;
+    width: 85%;
+    padding: 5px;
+    color: #64958f;
+    outline: none;
+    border-radius: 5px;
+}
+
+marquee{
+    color: red;
+    position: sticky;
+    top: 100%;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    transition: all 0.5s;
+}
+
+.mainbox .form-group .options{
+    text-align: center;
+}
+
+.errorinput{
+    border: 1px solid red !important;
+}
+
+.errorinput::placeholder{
+    color:red;
+}
+
+.clearfix{
+    width:100%;
+}
+
+.form-group.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.form-group.inactive {
+    pointer-events: none;
+    opacity: 0;
+}
+
+@media (max-width: 992px) {
+    .mainbox{
+        width:95%;
+    }
+
+    nav{
+        top: 10%;
+        font-size: 0.5em;
+    }
+    nav a{
+        color: black;
+    }
+
+}
+
